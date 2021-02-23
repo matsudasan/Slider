@@ -6,6 +6,7 @@ const SliderWidth = document.querySelector('.slider').clientWidth
 const width = SliderItems.clientWidth
 const itemNum = SliderItems.children.length
 let number = 0
+let flag=false
 
 const Slider = (command,num) => {
     if (num === 4 && command === "next") {
@@ -35,6 +36,8 @@ const Slider = (command,num) => {
         SliderItems.style.transform = `translateX(-${num * (width / itemNum)}px)`
         ButtonColor(num)
     }
+    flag=false
+    console.log(flag)
 }
 
 const Remove = (command) => {
@@ -74,20 +77,28 @@ const ButtonColor = (num) => {
 }
 
 const Back=()=>{
+    if(flag){
+        return
+    }
     if (number === 0) {
         number = itemNum
     } else {
         number--
     }
+    flag=true
     setTimeout(() => Slider('back',number), 300)
 }
 
 const Next=()=>{
+    if(flag){
+        return
+    }
     if (number === itemNum) {
         number = 0
     } else {
         number++
     }
+    flag=true
     setTimeout(() => Slider('next',number), 300)
 }
 
