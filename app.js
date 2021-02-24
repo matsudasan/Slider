@@ -35,9 +35,8 @@ const Slider = (command,num) => {
         SliderItems.style.transition = ".3s";
         SliderItems.style.transform = `translateX(-${num * (width / itemNum)}px)`
         ButtonColor(num)
+        flag=false
     }
-    flag=false
-    console.log(flag)
 }
 
 const Remove = (command) => {
@@ -54,6 +53,7 @@ const Remove = (command) => {
         number = 3
         ButtonColor(number)
     }
+    flag=false
 }
 
 const ButtonColor = (num) => {
@@ -86,7 +86,8 @@ const Back=()=>{
         number--
     }
     flag=true
-    setTimeout(() => Slider('back',number), 300)
+    //setTimeout(() => Slider('back',number), 300)
+    Slider('back',number)
 }
 
 const Next=()=>{
@@ -99,7 +100,8 @@ const Next=()=>{
         number++
     }
     flag=true
-    setTimeout(() => Slider('next',number), 300)
+    //setTimeout(() => Slider('next',number), 300)
+    Slider('next',number)
 }
 
 back.addEventListener('click',Back)
@@ -111,4 +113,4 @@ Array.from(buttons).forEach((ele, index) => {
     })
 })
 
-setInterval(Next,2000)
+//setInterval(Next,2000)
