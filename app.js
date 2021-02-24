@@ -41,7 +41,7 @@ const Slider =(command,num) => {
         SliderItems.style.transition = ".3s";
         SliderItems.style.transform = `translateX(-${num * (width / itemNum)}px)`
         ButtonColor(num)
-        flag=false
+        SliderItems.addEventListener('transitionend',()=>flag=false)
     }
 }
 
@@ -54,7 +54,7 @@ const Remove = (command) => {
         ButtonColor(number)
     } else {
         SliderItems.style.transition = "none";
-        SliderItems.style.transform = `translateX(-${3 * (width / itemNum)}px)`
+        SliderItems.style.transform = `translateX(-${(itemNum-1) * (width / itemNum)}px)`
         SliderItems.firstChild.remove()
         number = 3
         ButtonColor(number)
@@ -121,4 +121,4 @@ Array.from(buttons).forEach((ele, index) => {
     })
 })
 
-setInterval(Next,2000)
+//setInterval(Next,2000)
