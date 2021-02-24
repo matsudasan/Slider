@@ -2,13 +2,18 @@ const SliderItems = document.getElementById('slider-items')
 const back = document.getElementById('back')
 const next = document.getElementById('next')
 const buttons = document.getElementById('buttons').children
-const SliderWidth = document.querySelector('.slider').clientWidth
-const width = SliderItems.clientWidth
+let SliderWidth = document.querySelector('.slider').clientWidth
+let width = SliderItems.clientWidth
 const itemNum = SliderItems.children.length
 let number = 0
 let flag=false
 
-const Slider = (command,num) => {
+window.onresize=()=>{
+    SliderWidth = document.querySelector('.slider').clientWidth
+    width = SliderItems.clientWidth
+}
+
+const Slider =(command,num) => {
     if (num === 4 && command === "next") {
         const li = document.createElement('li')
         const img = document.createElement('img')
@@ -21,7 +26,7 @@ const Slider = (command,num) => {
     } else if (num === 4 && command === "back") {
         const li = document.createElement('li')
         const img = document.createElement('img')
-        img.src = SliderItems.children[3].children[0].src
+        img.src = SliderItems.children[itemNum-1].children[0].src
         li.appendChild(img)
         SliderItems.prepend(li)
         SliderItems.style.transition = "none";
@@ -30,7 +35,8 @@ const Slider = (command,num) => {
             SliderItems.style.transition = ".3s";
             SliderItems.style.transform = `translateX(0px)`
         }, 1)
-        setTimeout(() => Remove('back'), 400)
+        setTimeout(() => Remove('back'), 300)
+
     } else {
         SliderItems.style.transition = ".3s";
         SliderItems.style.transform = `translateX(-${num * (width / itemNum)}px)`
@@ -55,6 +61,8 @@ const Remove = (command) => {
     }
     flag=false
 }
+
+
 
 const ButtonColor = (num) => {
     if (num === 4) {
@@ -113,4 +121,4 @@ Array.from(buttons).forEach((ele, index) => {
     })
 })
 
-//setInterval(Next,2000)
+setInterval(Next,2000)

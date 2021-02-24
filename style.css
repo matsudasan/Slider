@@ -3,7 +3,12 @@ body{
     align-items: center;
     flex-direction: column;
 }
-
+.contain{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .slider {
     display: flex;
     width: 350px;
@@ -38,9 +43,7 @@ button {
 }
 
 #back {
-    position: absolute;
-    top: 250px;
-    left: 200px;
+    position: relative;
     z-index: 1;
     width: 40px;
     height: 40px;
@@ -51,10 +54,10 @@ button {
 }
 
 #back::before {
+    position: absolute;
     top: 10px;
     left: 13px;
     transform: rotate( -135deg);
-    position: absolute;
     width: 15px;
     height: 15px;
     border-top: 3px solid #fff;
@@ -63,9 +66,7 @@ button {
 }
 
 #next {
-    position: absolute;
-    top: 250px;
-    right: 200px;
+    position: relative;
     z-index: 1;
     width: 40px;
     height: 40px;
@@ -90,4 +91,46 @@ button {
 
 .black{
     background-color: black !important;
+}
+
+@media screen and (max-width: 480px) {
+    .contain{
+        width: 100%;
+    }
+    .slider{
+        width: 200px;
+    }
+    img{
+        width: 200px;
+    }
+    #back{
+        width: 30px;
+        height: 30px;
+    }
+    #next{
+        width: 30px;
+        height: 30px;
+    }
+    #back::before {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        transform: rotate( -135deg);
+        width: 10px;
+        height: 10px;
+        border-top: 3px solid #fff;
+        border-right: 3px solid #fff;
+        content: '';
+    }
+    #next::before {
+        position: absolute;
+        top: 8px;
+        left: 7px;
+        transform: rotate( 45deg);
+        width: 10px;
+        height: 10px;
+        border-top: 3px solid #fff;
+        border-right: 3px solid #fff;
+        content: '';
+    }
 }
